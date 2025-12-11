@@ -1,0 +1,8 @@
+node_modules
+package*.json
+pnpm*.yaml
+docker*.yml
+tsconfig*.json
+*.md
+dist/
+build/

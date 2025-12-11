@@ -1,0 +1,32 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-primary-50: #f1f7fd;
+  --color-primary-100: #dfecfa;
+  --color-primary-200: #c5dff8;
+  --color-primary-300: #9ecaf2;
+  --color-primary-400: #70adea;
+  --color-primary-500: #4e8fe3;
+  --color-primary-600: #3972d7;
+  --color-primary-700: #305fc5;
+  --color-primary-800: #2d4ea0;
+  --color-primary-900: #29437f;
+  --color-primary-950: #0f1628;
+  --color-background: var(--color-primary-950);
+  --color-foreground: #fff;
+}
+
+:root {
+  --radius: 0.625rem;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
+}

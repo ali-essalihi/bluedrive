@@ -1,0 +1,19 @@
+{
+  "name": "@bluedrive/shared",
+  "private": true,
+  "files": ["dist"],
+  "exports": {
+    "./*": {
+      "types": "./*.ts",
+      "browser": "./*.ts",
+      "default": "./dist/*.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.8",
+    "typescript": "^5.9.3"
+  }
+}

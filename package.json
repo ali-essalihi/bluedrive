@@ -1,0 +1,11 @@
+{
+  "name": "bluedrive",
+  "private": true,
+  "scripts": {
+    "prettier:check": "prettier --check .",
+    "prettier:write": "prettier --write ."
+  },
+  "devDependencies": {
+    "prettier": "^3.7.4"
+  }
+}

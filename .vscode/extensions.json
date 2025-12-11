@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "ahmadalli.vscode-nginx-conf",
+    "ms-azuretools.vscode-docker"
+  ]
+}
