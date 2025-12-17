@@ -3,9 +3,18 @@
   "private": true,
   "scripts": {
     "prettier:check": "prettier --check .",
-    "prettier:write": "prettier --write ."
+    "prettier:write": "prettier --write .",
+    "eslint": "eslint --cache --cache-location node_modules/.eslintcache .",
+    "eslint:fix": "eslint --cache --cache-location node_modules/.eslintcache --fix ."
   },
   "devDependencies": {
-    "prettier": "^3.7.4"
+    "@eslint/js": "^9.39.2",
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.25",
+    "globals": "^16.5.0",
+    "prettier": "^3.7.4",
+    "typescript-eslint": "^8.50.0"
   }
 }

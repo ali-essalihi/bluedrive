@@ -1,7 +1,7 @@
 import 'dotenv/config'
 import app from './app'
 
-async function bootServer() {
+function bootServer() {
   const server = app.listen(3000, (err) => {
     if (err) throw err
     console.log('Listening on ' + JSON.stringify(server.address()))
