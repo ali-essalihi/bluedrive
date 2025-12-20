@@ -20,6 +20,7 @@ services:
     env_file:
       - backend/.env
     environment:
+      - NODE_ENV=production
       - ENABLE_CORS=false
       - TRUST_PROXY=true
       - UPLOAD_DIR=/uploads
