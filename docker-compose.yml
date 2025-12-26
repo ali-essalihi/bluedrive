@@ -24,6 +24,7 @@ services:
       - ENABLE_CORS=false
       - TRUST_PROXY=true
       - UPLOAD_DIR=/uploads
+      - LOG_LEVEL=info
     restart: always
     expose:
       - 3000

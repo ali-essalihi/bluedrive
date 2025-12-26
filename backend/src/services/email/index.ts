@@ -2,14 +2,16 @@ import nodemailer from 'nodemailer'
 import mustache from 'mustache'
 import fs from 'fs-extra'
 import path from 'path'
+import env from '../../env'
+import logger from '../../logger'
 
 const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: Number(process.env.SMTP_PORT),
-  secure: process.env.SMTP_PORT === '465',
+  host: env.SMTP_HOST,
+  port: env.SMTP_PORT,
+  secure: env.SMTP_PORT === 465,
   auth: {
-    user: process.env.SMTP_USERNAME,
-    pass: process.env.SMTP_PASSWORD,
+    user: env.SMTP_USERNAME,
+    pass: env.SMTP_PASSWORD,
   },
 })
 
@@ -30,9 +32,15 @@ interface Options<K extends TemplateId> {
 
 export async function sendEmail<K extends TemplateId>(options: Options<K>) {
   const { to, subject, templateId, data } = options
-  const templatePath = path.join(__dirname, 'templates', templateId + '.txt')
-  const template = await fs.readFile(templatePath, 'utf8')
-  const text = mustache.render(template, data)
-  const from = process.env.SMTP_FROM
-  return transporter.sendMail({ from, to, subject, text })
+  try {
+    const templatePath = path.join(__dirname, 'templates', templateId + '.txt')
+    const template = await fs.readFile(templatePath, 'utf8')
+    const text = mustache.render(template, data)
+    const from = env.SMTP_FROM
+    logger.debug(options, 'Sending email')
+    const { response } = await transporter.sendMail({ from, to, subject, text })
+    logger.info({ templateId, to, response }, 'Email sent successfully')
+  } catch (err) {
+    logger.error({ err, to, templateId }, 'Failed to send email')
+  }
 }

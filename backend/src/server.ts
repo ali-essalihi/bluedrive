@@ -1,15 +1,19 @@
-import 'dotenv/config'
+import env from './env'
 import app from './app'
+import logger from './logger'
 
 function bootServer() {
-  const server = app.listen(3000, (err) => {
+  logger.info('Booting server')
+  const server = app.listen(env.PORT, (err) => {
     if (err) throw err
-    console.log('Listening on ' + JSON.stringify(server.address()))
+    logger.info(`Listening on port ${env.PORT}`)
   })
 
-  function shutdown() {
+  function shutdown(signal: NodeJS.Signals) {
+    logger.info('Received %s. Shutting down', signal)
     server.close((err) => {
       if (err) throw err
+      logger.info('Server closed. Exiting')
       process.exit(0)
     })
   }

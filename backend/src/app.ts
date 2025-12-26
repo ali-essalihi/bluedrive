@@ -1,13 +1,22 @@
 import express from 'express'
 import cors from 'cors'
+import ApiError from './ApiError'
+import errorHandler from './middlewares/error-handler'
+import hpp from 'hpp'
+import env from './env'
+import morgan from 'morgan'
 
 const app = express()
 
 app.disable('etag')
 app.disable('x-powered-by')
-app.set('trust proxy', process.env.TRUST_PROXY === 'true')
+app.set('trust proxy', env.TRUST_PROXY)
 
-if (process.env.ENABLE_CORS === 'true') {
+if (env.NODE_ENV !== 'production') {
+  app.use(morgan('dev'))
+}
+
+if (env.ENABLE_CORS) {
   app.use(
     cors({
       methods: ['GET', 'HEAD', 'POST', 'PATCH', 'DELETE', 'PUT'],
@@ -15,13 +24,22 @@ if (process.env.ENABLE_CORS === 'true') {
       allowedHeaders: ['Content-Type'],
       credentials: true,
       exposedHeaders: [],
-      origin: process.env.CLIENT_ORIGIN,
+      origin: env.CLIENT_ORIGIN,
     })
   )
 }
 
+app.use(hpp({ checkBody: false }))
+app.use(express.json())
+
 app.get('/health', (req, res) => {
   res.sendStatus(200)
 })
+
+app.use(() => {
+  throw new ApiError(404, 'The requested resource was not found')
+})
+
+app.use(errorHandler)
 
 export default app

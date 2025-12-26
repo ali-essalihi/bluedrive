@@ -17,6 +17,10 @@ export default defineConfig([
   {
     files: ['**/*.{js,mjs,cjs,ts,tsx}'],
     extends: [js.configs.recommended],
+    linterOptions: {
+      reportUnusedDisableDirectives: 'warn',
+      reportUnusedInlineConfigs: 'warn',
+    },
   },
   {
     files: ['**/*.{ts,tsx}'],
@@ -24,6 +28,9 @@ export default defineConfig([
       tseslint.configs.recommendedTypeChecked,
       tseslint.configs.stylisticTypeChecked,
     ],
+    rules: {
+      '@typescript-eslint/no-deprecated': 'warn',
+    },
     languageOptions: {
       parserOptions: {
         projectService: true,

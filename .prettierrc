@@ -1,5 +1,8 @@
 {
   "semi": false,
   "singleQuote": true,
-  "trailingComma": "es5"
+  "trailingComma": "es5",
+  "tailwindStylesheet": "./frontend/src/index.css",
+  "tailwindFunctions": ["clsx", "cva"],
+  "plugins": ["prettier-plugin-tailwindcss"]
 }
