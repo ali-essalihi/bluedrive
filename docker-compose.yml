@@ -25,6 +25,7 @@ services:
       - TRUST_PROXY=true
       - UPLOAD_DIR=/uploads
       - LOG_LEVEL=info
+      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?schema=public
     restart: always
     expose:
       - 3000

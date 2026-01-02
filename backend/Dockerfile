@@ -11,11 +11,15 @@ COPY backend/package.json backend/package.json
 
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
+COPY backend/prisma/schema.prisma backend/prisma/schema.prisma
+COPY backend/tsconfig.json backend/tsconfig.json
+RUN pnpm --filter backend exec prisma generate
+
 COPY shared shared
 COPY backend backend
 
 RUN pnpm --filter=shared --filter=backend build && \
-    pnpm deploy --filter=backend --prod /prod/backend
+    pnpm deploy --filter=backend --no-optional --prod /prod/backend
 
 FROM node:20.19.5-alpine3.21
 

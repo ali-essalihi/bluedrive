@@ -6,3 +6,4 @@ tsconfig*.json
 *.md
 dist/
 build/
+backend/src/generated

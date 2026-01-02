@@ -1,6 +1,6 @@
 import type { Request, Response, NextFunction } from 'express'
 import type { ZodObject } from 'zod'
-import ApiError from '../ApiError'
+import ApiError from '../ApiError.js'
 
 export default function bodyValidator(schema: ZodObject) {
   return (req: Request, res: Response, next: NextFunction) => {

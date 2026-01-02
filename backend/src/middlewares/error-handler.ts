@@ -1,6 +1,6 @@
 import type { Request, Response, NextFunction } from 'express'
-import ApiError from '../ApiError'
-import logger from '../logger'
+import ApiError from '../ApiError.js'
+import logger from '../logger.js'
 
 /* eslint @typescript-eslint/no-unused-vars: ["error", { "argsIgnorePattern": "next" }] */
 export default function errorHandler(

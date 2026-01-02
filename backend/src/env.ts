@@ -18,6 +18,7 @@ const envSchema = z.object({
   SMTP_USERNAME: z.string().nonempty(),
   SMTP_PASSWORD: z.string().nonempty(),
   LOG_LEVEL: z.string().optional().default('debug'),
+  DATABASE_URL: z.url({ protocol: /^postgresql$/ }),
 })
 
 const envParsed = envSchema.safeParse(process.env)

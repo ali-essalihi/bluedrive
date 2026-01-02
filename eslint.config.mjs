@@ -13,6 +13,7 @@ export default defineConfig([
     'backend/vitest.config.ts',
     'frontend/vite.config.ts',
     'frontend/src/vite-env.d.ts',
+    'backend/src/generated',
   ]),
   {
     files: ['**/*.{js,mjs,cjs,ts,tsx}'],

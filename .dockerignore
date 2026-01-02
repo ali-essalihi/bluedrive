@@ -5,4 +5,8 @@
 **/*Dockerfile*
 **/dist
 backend/vitest.config.ts
+backend/src/generated
+backend/prisma
+backend/prisma.config.ts
+!backend/prisma/schema.prisma
 !frontend/.env

@@ -1,9 +1,9 @@
 import express from 'express'
 import cors from 'cors'
-import ApiError from './ApiError'
-import errorHandler from './middlewares/error-handler'
+import ApiError from './ApiError.js'
+import errorHandler from './middlewares/error-handler.js'
 import hpp from 'hpp'
-import env from './env'
+import env from './env.js'
 import morgan from 'morgan'
 
 const app = express()

@@ -2,8 +2,8 @@ import nodemailer from 'nodemailer'
 import mustache from 'mustache'
 import fs from 'fs-extra'
 import path from 'path'
-import env from '../../env'
-import logger from '../../logger'
+import env from '../../env.js'
+import logger from '../../logger.js'
 
 const transporter = nodemailer.createTransport({
   host: env.SMTP_HOST,

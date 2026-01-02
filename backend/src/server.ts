@@ -1,6 +1,6 @@
-import env from './env'
-import app from './app'
-import logger from './logger'
+import env from './env.js'
+import app from './app.js'
+import logger from './logger.js'
 
 function bootServer() {
   logger.info('Booting server')
